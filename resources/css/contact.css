@@ -1,0 +1,305 @@
+section {
+    position: relative;
+    padding: 230px 140px;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 145px;
+}
+
+.intro {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    gap: 33px;
+    padding: 410px 140px 100px;
+    background: url("../images/contact_page/bc/intro.png");
+    background-size: cover;
+    color: #FFF;
+}
+
+
+.intro-headline-hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 50px;
+}
+
+
+
+.intro-open-time {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 40px;
+    width: 696px;
+}
+
+.intro-open-time-day {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.intro-open-time-divider {
+    border: 2px dashed #fff;
+    width: 696px;
+    height: 0;
+}
+
+.intro-open-time-hours {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.contact-content-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 50px;
+    color: var(--color-additional);
+}
+
+.contact-content-row-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 689px;
+    gap: 20px;
+}
+
+.contact-content-row.reverse {
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 60px;
+}
+
+.contact-reservation {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 46px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 46px;
+}
+
+.form_headline_hero {
+    max-width: 1000px;
+}
+
+.button {
+    max-width: 700px;
+}
+
+.alt-bc-color {
+    background: var(--bc-dark);
+    padding: 214px 140px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 100px;
+}
+
+
+.contact-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    padding: 20px 46px;
+    background: none;
+    color: #FFF;
+    font-family: var(--header-font);
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.bc-decoration-orange {
+    position: absolute;
+    top: 152px;
+    left: 706px;
+    z-index: -1;
+}
+
+.bc-decoration-leaf {
+    position: absolute;
+    top: 50px;
+    left: 160px;
+    z-index: 0;
+}
+
+@media (max-width: 1600px) {
+    .intro {
+        padding: 350px 100px 80px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .intro-headline-hero {
+        gap: 40px;
+    }
+
+    .intro-open-time {
+        width: 100%;
+    }
+
+    .intro-open-time-divider {
+        width: 100%;
+    }
+
+    section {
+        padding: 180px 100px;
+        gap: 120px;
+    }
+
+    .contact-content-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .contact-content-row.reverse {
+        flex-direction: column;
+    }
+
+    .contact-content-row-text {
+        width: 100%;
+    }
+
+    .bc-decoration-orange {
+        left: 100px;
+        width: 300px;
+    }
+
+    .bc-decoration-leaf {
+        left: 100px;
+        width: 300px;
+    }
+
+    .alt-bc-color {
+        padding: 180px 100px 60px;
+        gap: 80px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .contact-content {
+        padding: 150px 100px;
+        gap: 100px;
+    }
+
+    .contact-intro {
+        padding: 300px 100px 80px 100px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .opening-hours {
+        width: 100%;
+    }
+
+    .hours-divider {
+        width: 100%;
+    }
+
+    .reservation-section {
+        padding: 150px 100px 60px 100px;
+    }
+
+    .decoration-orange {
+        left: 500px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .intro {
+        padding: 300px 80px 60px;
+    }
+
+    section {
+        padding: 150px 80px;
+        gap: 100px;
+    }
+
+    .bc-decoration-orange {
+        display: none;
+    }
+
+    .bc-decoration-leaf {
+        display: none;
+    }
+
+    .alt-bc-color {
+        padding: 150px 80px 50px;
+        gap: 60px;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .contact-reservation {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 800px) {
+    .intro {
+        padding: 200px 80px 150px;
+    }
+
+    .contact-content {
+        padding: 80px 20px;
+        gap: 60px;
+    }
+
+    .contact-intro {
+        padding: 200px 20px 60px 20px;
+    }
+
+    .contact-row {
+        flex-direction: column;
+    }
+
+    .contact-row.reverse {
+        flex-direction: column;
+    }
+
+    .contact-info {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .reservation-section {
+        padding: 80px 20px 40px 20px;
+        gap: 60px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .decoration-orange,
+    .decoration-leaf {
+        display: none;
+    }
+}

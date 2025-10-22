@@ -1,0 +1,164 @@
+@font-face {
+    font-family: 'rouble';
+    src: url('../fonts/rouble-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alconica-Regular';
+    src: url('../fonts/Aclonica-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Cuprum';
+    src: url('../fonts/Cuprum-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Orelega One';
+    src: url('../fonts/OrelegaOne-Regular.ttf');
+}
+
+:root {
+    --main-font: "Cuprum", sans-serif;
+    --header-font: "Orelega One", sans-serif;
+    --logo-font: "Alconica-Regular", sans-serif;
+}
+
+body {
+    font-family: var(--main-font);
+    font-size: 20px;
+    color: white;
+    line-height: 1.5;
+}
+
+.rouble{
+    color: #FFF;
+    font-family:'rouble';
+    font-size: 50px;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.logo {
+    font-family: var(--logo-font);
+    font-size: 24px;
+    text-transform: uppercase;
+    color: var(--color-additional);
+}
+
+h1 {
+    font-family: var(--header-font);
+    font-size: 180px;
+    font-weight: normal;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-family: var(--header-font);
+    font-size: 108px;
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+
+
+h3 {
+    font-family: var(--header-font);
+    font-size: 59px;
+    font-weight: normal;
+}
+
+
+h4 {
+    font-family: var(--header-font);
+    font-size: 48px;
+    font-weight: normal;
+}
+
+h5 {
+    font-family: var(--header-font);
+    font-size: 20px;
+    font-weight: normal;
+}
+
+span {
+    color: var(--color-contrast);
+}
+
+a {
+    color: var(--color-additional);
+    transition: color 0.3s ease;
+}
+
+a:hover,
+a:active {
+    color: var(--color-additional-active);
+}
+
+@media (max-width: 1600px) {
+    body {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 150px;
+    }
+
+    h2 {
+        font-size: 90px;
+    }
+
+    h3 {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 1200px) {
+    body {
+        font-size: 16px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 100px;
+    }
+
+    h2 {
+        font-size: 60px;
+    }
+
+    h3 {
+        font-size: 36px;
+    }
+
+    h4 {
+        font-size: 32px;
+    }
+    .rouble{
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 800px){
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 36px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+}

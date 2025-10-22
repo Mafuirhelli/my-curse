@@ -1,0 +1,139 @@
+.intro {
+    padding: 350px 140px 265px;
+    background: url("../images/menu_page/bc/intro.png");
+    background-size: cover;
+}
+
+.intro p{
+    color: #fff;
+}
+
+
+section {
+    margin-bottom: 82px;
+    padding: 0 140px;
+}
+
+.menu-category {
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.menu-category-content {
+    display: flex;
+    text-align: left;
+    margin-top: 50px;
+    align-items: center;
+}
+
+.category-card-price {
+    text-align: right;
+    border-bottom: 4px dashed #fff;
+}
+
+.category-cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.category-card-desc {
+    color: var(--color-additional);
+}
+
+.category-card {
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+}
+
+.category-card-img {
+    width: 800px;
+    height: 800px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.delivery-section {
+    display: flex;
+    padding: 150px 140px;
+    background: var(--bc-dark);
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 75px;
+}
+
+
+.menu-delivery {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    gap: 48px;
+}
+
+@media (max-width: 1600px) {
+
+    .intro {
+        padding: 250px 100px 200px;
+    }
+
+    .menu-category-content {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .category-cards {
+        gap: 40px;
+    }
+
+    .category-card-img {
+        width: 600px;
+        height: 600px;
+    }
+
+    .delivery-section {
+        padding: 120px 100px;
+        gap: 60px;
+    }
+
+    .menu-delivery {
+        flex-direction: column;
+        justify-items: stretch;
+        justify-content: stretch;
+        gap: 30px;
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+    .intro {
+        padding: 200px 80px 150px;
+    }
+
+    .menu-category {
+        margin-bottom: 80px;
+    }
+
+    .category-cards {
+        gap: 30px;
+    }
+
+    .category-card-img {
+        width: 450px;
+        height: 450px;
+    }
+
+    .delivery-section {
+        padding: 100px 80px;
+        gap: 50px;
+    }
+}
+
