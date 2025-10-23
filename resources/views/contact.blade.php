@@ -1,4 +1,4 @@
-@extends('template')
+ @extends('template')
 @section('title')
     <title>Контакты</title>
 @endsection
@@ -50,7 +50,7 @@
                 <button class="contact-button">
                     На карте
                 </button>
-            </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d750.57437107549376!2d91.42311271948543!3d53.714878690074386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d2c3d439b7a2499%3A0x2881e3f6dfe09a4d!2z0JTQvtC8INCa0L7Qu9C-0YLRg9GI0LrQuNC90LAu!5e0!3m2!1sru!2sru!4v1761194005783!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
         </div>
     </section>
     <section id="reservation-section" class="alt-bc-color">

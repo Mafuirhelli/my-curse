@@ -303,3 +303,10 @@ section {
         display: none;
     }
 }
+#map {
+    height: 400px;
+    width: 100%;
+}
+iframe {
+    filter: invert(90%) sepia(50%) saturate(350%)  contrast(110%) hue-rotate(360deg);
+}
