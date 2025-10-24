@@ -167,7 +167,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/xampp/htdocs/my-curse/resources/views/users",
+    "last_opened_file_path": "C:/xampp/htdocs/my-curse/public/images/user-info/avatars",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -180,6 +180,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\my-curse\public\images\user-info\avatars" />
       <recent name="C:\xampp\htdocs\my-curse\resources\views\users" />
       <recent name="C:\xampp\htdocs\my-curse\resources\views\user" />
       <recent name="C:\xampp\htdocs\my-curse" />

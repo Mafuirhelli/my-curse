@@ -33,8 +33,8 @@
     </nav>
     @if (Route::has('login'))
         @auth
-
             <a class="profile-link" href="{{ route('profile') }}">Профиль</a>
+            <a class="logout-link" href="{{ route('profile') }}">Выйти</a>
         @else
                 <div style="display: flex; flex-direction: column; gap: 5px;">
                     <a class="login-button" href="{{ route('register') }}">Зарегистрироваться</a>

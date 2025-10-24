@@ -20,31 +20,46 @@
 section {
     position: relative;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
     flex-direction: row;
     gap: 200px;
     background: url("../images/main_page/bc/main_bc.png") center center no-repeat;
     background-size: cover;
-    padding: 150px 140px 300px 140px;
+    padding: 150px 140px 100px 140px;
 
 }
-.login-content{
+.profile-container{
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    gap: 20px;
-}
-
-
-.form-control{
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 50px;
     width: 100%;
+
+}
+.user-info{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.order-section{
+    background: var(--bc-dark);
+}
+.orders-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 200px;
 }
 
-.invalid-feedback{
-    color: var(--color-contrast-active);
+.user-avatar{
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    z-index: 4;
 }
-
 
 

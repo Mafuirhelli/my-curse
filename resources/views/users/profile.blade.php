@@ -8,10 +8,36 @@
 @section('content')
     <section class="section-overlay">
         <div class="overlay"></div>
-        <div style="display: flex; flex-direction: column">
-            <h2>Привет, писюн</h2>
+        <div class="profile-container">
+            <img class="user-avatar" src="images/user-info/avatars/1.png" alt="profile-dummy">
+            <div class="user-info-container">
+                <div class="user-info">
+                    <p>имяПользователя</p>
+                    <p>pochta@pochta.ru</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="order-section">
+        <h2>Мои заказы</h2>
+        <div class="orders-container">
+            <div class="order">
+                <div class="infoLine">
+                    <div class="infoLine"><p>Заказ</p><p class="number">№ 66666666</p></div>
+                    <div class="infoLine"><p>Статус</p><p class="status">Готов</p></div>
+                </div>
+                <div class="infoLine"><p>Сумма</p><p class="cost">6 666 Руб</p></div>
+                <div class="infoLine"><a href="#" class="cancel">отменить заказ</a></div>
+            </div>
+            <div class="order">
+                <div class="infoLine">
+                    <div class="infoLine"><p>Заказ</p><p class="number">№ 44444444</p></div>
+                    <div class="infoLine"><p>Статус</p><p class="status">В сборке</p></div>
+                </div>
+                <div class="infoLine"><p>Сумма</p><p class="cost">4 444 Руб</p></div>
+                <div class="infoLine"><a href="#" class="cancel">отменить заказ</a></div>
+            </div>
         </div>
 
     </section>
-
 @endsection
