@@ -12,6 +12,8 @@ header {
     z-index: 100;
 }
 
+
+
 .logo {
     display: flex;
     align-items: center;
@@ -46,6 +48,10 @@ header {
     height: 2px;
     background-color: var(--color-additional-active);
     transition: width 0.3s ease;
+}
+
+.profile-link{
+    color: var(--color-contrast);
 }
 
 .menu a:hover::after {

@@ -16,7 +16,7 @@
 <header>
     <div class="logo">
         <img class="logo-icon" src="images/svg/svg_icons/logo.svg" alt="Лого">
-        <a href="main.blade.php">mugduck</a>
+        <a href="{{route('main')}}">mugduck</a>
     </div>
 
     <nav>
@@ -33,9 +33,8 @@
     </nav>
     @if (Route::has('login'))
         @auth
-            <li class="nav-item">
-                <a class="nav-link" href="#">Dashboard</a>
-            </li>
+
+            <a class="profile-link" href="{{ route('profile') }}">Профиль</a>
         @else
                 <div style="display: flex; flex-direction: column; gap: 5px;">
                     <a class="login-button" href="{{ route('register') }}">Зарегистрироваться</a>
