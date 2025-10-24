@@ -27,37 +27,52 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('register', [
-    UserController::class, 'create'
-])->name('register');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('profile',
+        [UserController::class, 'profile'
+        ])->name('profile');
+});
 
-Route::post('register',
-    [UserController::class, 'store'
-    ])->name('user.store');
+Route::middleware('guest')->group(function () {
+    Route::get('register',
+        [UserController::class, 'create'
+        ])->name('register');
 
-Route::get('login',
-    [UserController::class, 'login'
-    ])->name('login');
+    Route::post('register',
+        [UserController::class, 'store'
+        ])->name('users.store');
 
-Route::get('logout',
-    [UserController::class, 'logout'
-    ])->name('logout');
+    Route::get('login',
+        [UserController::class, 'login'
+        ])->name('login');
+    Route::post('login',
+        [UserController::class, 'loginAuth'
+        ])->name('login.auth');
+});
 
 
-Route::get('verify-email', function () {
-    return view('users.verify-email');
-})->middleware('auth')->name('verification.notice');
+Route::middleware('auth')->group(function () {
+    Route::get('verify-email', function () {
+        return view('users.verify-email');
+    })->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
 
-    return redirect()->route('profile');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+        return redirect()->route('profile');
+    })->middleware('signed')->name('verification.verify');
 
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
 
-    return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:3,1'])->name('verification.send');
+        return back()->with('message', 'Verification link sent!');
+    })->middleware('throttle:3,1')->name('verification.send');
+
+    Route::get('logout',
+        [UserController::class, 'logout'
+        ])->name('logout');
+});
+
+
 
 
