@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -31,6 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('profile',
         [UserController::class, 'profile'
         ])->name('profile');
+    Route::post('/profile/avatar', [UserController::class, 'updateAvatar'])->name('profile.avatar.update');
 });
 
 Route::middleware('guest')->group(function () {

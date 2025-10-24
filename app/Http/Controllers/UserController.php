@@ -7,6 +7,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -50,11 +52,12 @@ class UserController extends Controller
         ]);
 
     }
-    public function profile()
+        public function profile(): View
     {
-        return view('users.profile');
+        $user = Auth::user();
+        $orders = $user->orders()->with('items.product')->latest()->get();
+        return view('users.profile', compact('user', 'orders'));
     }
-
     public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
@@ -64,6 +67,29 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function updateAvatar(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $user = Auth::user();
+
+        if ($request->hasFile('avatar')) {
+            if ($user->avatar !== 'images/user-info/avatars/default-avatar.png') {
+                Storage::disk('public')->delete($user->avatar);
+            }
+
+            $avatarPath = $request->file('avatar')->store('avatars', 'public');
+            $user->avatar = $avatarPath;
+            $user->save();
+
+            return redirect()->back()->with('success', 'Аватар успешно обновлен');
+        }
+
+        return redirect()->back()->with('error', 'Ошибка при загрузке аватара');
     }
 
 }

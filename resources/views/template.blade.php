@@ -34,7 +34,7 @@
     @if (Route::has('login'))
         @auth
             <div class="auth-container">
-                <a class="profile-link" href="{{ route('profile') }}"><img src="images/user-info/avatars/1.png" alt="profile-dummy" class="user-avatar-header">{{ Auth::user()->name }}</a>
+                <a class="profile-link" href="{{ route('profile') }}"><img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="profile-dummy" class="user-avatar-header">{{ Auth::user()->name }}</a>
                 <a class="logout-link" href="{{ route('logout') }}">Выйти</a>
             </div>
 

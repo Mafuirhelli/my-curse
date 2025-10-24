@@ -1,9 +1,9 @@
 @extends('template')
 @section('title')
-    <title>Вход</title>
+    <title>Профиль</title>
 @endsection
 @section('css')
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 @endsection
 @section('content')
     <section class="section-overlay">
@@ -14,11 +14,23 @@
             </h4>
         @endif
         <div class="profile-container">
-            <img class="user-avatar" src="images/user-info/avatars/1.png" alt="profile-dummy">
+            <div class="avatar-container">
+                <img class="user-avatar" src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="profile-dummy">
+                <form action="{{ route('profile.avatar.update') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="avatar" id="avatar" style="display: none;" onchange="this.form.submit()">
+                    <a href="#" onclick="document.getElementById('avatar').click()">Сменить аватар</a>
+                </form>
+            </div>
+
             <div class="user-info-container">
                 <div class="user-info">
                     <p>{{ Auth::user()->name }}</p>
                     <p>{{ Auth::user()->email }}</p>
+                    <p>Количество баллов: {{ Auth::user()->points }}</p>
+                    @if(Auth::user()->is_admin)
+                        <p><a href="{{ route('admin.products') }}">Панель администратора</a></p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -41,8 +53,5 @@
                 </div>
                 <div class="infoLine"><p>Сумма</p><p class="cost">4 444 Руб</p></div>
                 <div class="infoLine"><a href="#" class="cancel">отменить заказ</a></div>
-            </div>
-        </div>
 
-    </section>
 @endsection
