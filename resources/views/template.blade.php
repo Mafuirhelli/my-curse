@@ -33,10 +33,13 @@
     </nav>
     @if (Route::has('login'))
         @auth
-            <a class="profile-link" href="{{ route('profile') }}">Профиль</a>
-            <a class="logout-link" href="{{ route('logout') }}">Выйти</a>
+            <div class="auth-container">
+                <a class="profile-link" href="{{ route('profile') }}"><img src="images/user-info/avatars/1.png" alt="profile-dummy" class="user-avatar-header">{{ Auth::user()->name }}</a>
+                <a class="logout-link" href="{{ route('logout') }}">Выйти</a>
+            </div>
+
         @else
-                <div style="display: flex; flex-direction: column; gap: 5px;">
+                <div class="guest-container">
                     <a class="login-button" href="{{ route('register') }}">Зарегистрироваться</a>
                     <a class="login-button" href="{{ route('login') }}">Войти</a>
                 </div>
@@ -44,6 +47,7 @@
     @endif
 </header>
 <main>
+
 
     @yield('content')
 </main>

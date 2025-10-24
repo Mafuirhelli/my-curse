@@ -8,12 +8,17 @@
 @section('content')
     <section class="section-overlay">
         <div class="overlay"></div>
+        @if (session('success'))
+            <h4 class="alert alert-success">
+                {{ session('success') }}
+            </h4>
+        @endif
         <div class="profile-container">
             <img class="user-avatar" src="images/user-info/avatars/1.png" alt="profile-dummy">
             <div class="user-info-container">
                 <div class="user-info">
-                    <p>имяПользователя</p>
-                    <p>pochta@pochta.ru</p>
+                    <p>{{ Auth::user()->name }}</p>
+                    <p>{{ Auth::user()->email }}</p>
                 </div>
             </div>
         </div>

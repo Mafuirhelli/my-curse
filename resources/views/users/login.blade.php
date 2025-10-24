@@ -9,20 +9,29 @@
     <section class="login-content section-overlay">
         <div class="overlay"></div>
         <h2>Вход</h2>
-            <form action="{{route('user.store')}}" method="get" class="login-content" style="gap: 5px">
+        @if ($errors->any())
+            <div>
+                <ul style="list-style: none; color: var(--color-contrast-active)">
+                    @foreach ($errors->all() as $error)
+                        <li >{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+            <form action="{{ route('login.auth') }}" method="post" class="login-content" style="gap: 5px">
                 @csrf
                 <label for="email">Email</label>
-                <input name="email" type="email" class="@error('email') is-invalid @enderror form-control" id="email" placeholder="Email" value="{{ old('email') }}">
-                @error('email')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                <input name="email" type="email" class=" form-control" id="email" placeholder="Email">
                 <label for="password">Пароль</label>
-                <input name="password" type="password" class=" @error('password') is-invalid @enderror form-control" id="password" placeholder="Пароль">
-                @error('password')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-                <label for="password_confirmation">Подтвердите пароль</label>
-                <input name="password_confirmation" class="form-control @error('password') is-invalid @enderror form-control" type="password" placeholder="Подтвердите пароль" id="password_confirmation">
+                <input name="password" type="password" class="form-control" id="password" placeholder="Пароль">
+
+                <div class="mb-3 form-check">
+                    <input name="remember" class="form-check-input" type="checkbox" id="remember">
+                    <label class="form-check-label" for="remember">
+                        Запомнить меня
+                    </label>
+                </div>
+
                 <button type="submit" class="primary-btn" style="margin-top: 30px">Вход</button>
             </form>
         </section>
