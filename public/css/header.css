@@ -51,7 +51,28 @@ header {
 }
 
 .profile-link{
+    display: flex;
+    align-items: center;
+    gap: 5px;
     color: var(--color-contrast);
+}
+.guest-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.auth-container{
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+}
+
+
+.user-avatar-header{
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
 }
 
 .menu a:hover::after {
