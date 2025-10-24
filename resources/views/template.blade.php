@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/fonts.css">
     @yield('css')
     <link rel="stylesheet" href="css/style.css">
+
+
 </head>
 <body class="bc-color">
 <header>
@@ -19,7 +21,7 @@
 
     <nav>
         <input id="burger-toggle" type="checkbox">
-        <label for="burger-toggle">
+        <label class="header-label" for="burger-toggle">
             <span></span>
         </label>
         <ul class="menu">
@@ -29,9 +31,22 @@
             <li><a href="{{ route('menu') }}#delivery-category">Доставка</a></li>
         </ul>
     </nav>
-    <a class="login-button" href="{{ route('login') }}">Войти</a>
+    @if (Route::has('login'))
+        @auth
+            <li class="nav-item">
+                <a class="nav-link" href="#">Dashboard</a>
+            </li>
+        @else
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <a class="login-button" href="{{ route('register') }}">Зарегистрироваться</a>
+                    <a class="login-button" href="{{ route('login') }}">Войти</a>
+                </div>
+
+        @endif
+    @endif
 </header>
 <main>
+
     @yield('content')
 </main>
 <footer>
