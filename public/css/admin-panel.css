@@ -1,0 +1,68 @@
+.section-overlay{
+    position: relative;
+    color: var(--color-additional);
+
+}
+
+.section-overlay .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../images/main_page/overlays/overlay_pic.png") no-repeat;
+    background-size: cover;
+    mix-blend-mode: color-burn;
+    z-index: 3;
+    pointer-events: none;
+}
+
+section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    background: url("../images/main_page/bc/main_bc.png") center center no-repeat;
+    background-size: cover;
+    padding: 150px 140px 100px 140px;
+
+}
+.profile-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 50px;
+    width: 100%;
+
+}
+.user-info{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.order-section{
+    background: var(--bc-dark);
+}
+.orders-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 200px;
+}
+
+.user-avatar{
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+}
+
+.avatar-container{
+    z-index: 4;
+}
+
+

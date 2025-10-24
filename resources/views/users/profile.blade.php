@@ -29,29 +29,34 @@
                     <p>{{ Auth::user()->email }}</p>
                     <p>Количество баллов: {{ Auth::user()->points }}</p>
                     @if(Auth::user()->is_admin)
-                        <p><a href="{{ route('admin.products') }}">Панель администратора</a></p>
+                        <p><a href="{{ route('admin.dashboard') }}">Панель администратора</a></p>
                     @endif
                 </div>
             </div>
         </div>
     </section>
-    <section class="order-section">
-        <h2>Мои заказы</h2>
-        <div class="orders-container">
-            <div class="order">
-                <div class="infoLine">
-                    <div class="infoLine"><p>Заказ</p><p class="number">№ 66666666</p></div>
-                    <div class="infoLine"><p>Статус</p><p class="status">Готов</p></div>
-                </div>
-                <div class="infoLine"><p>Сумма</p><p class="cost">6 666 Руб</p></div>
-                <div class="infoLine"><a href="#" class="cancel">отменить заказ</a></div>
+        <section class="order-section">
+            <h2>Мои заказы</h2>
+            <div class="orders-container">
+                @foreach($orders as $order)
+                    <div class="order">
+                        <div class="infoLine">
+                            <div class="infoLine"><p>Заказ</p><p class="number">№ {{ $order->id }}</p></div>
+                            <div class="infoLine"><p>Статус</p><p class="status">{{ $order->status }}</p></div>
+                        </div>
+                        <div class="infoLine">
+                            <p>Сумма</p>
+                            <p class="cost">{{ number_format($order->final_amount, 2) }} Руб</p>
+                        </div>
+                        <div class="infoLine">
+                            <p>Использовано баллов: {{ $order->points_used }}</p>
+                            <p>Начислено баллов: {{ $order->points_earned }}</p>
+                        </div>
+                        @if($order->status == 'pending')
+                            <div class="infoLine"><a href="#" class="cancel">отменить заказ</a></div>
+                        @endif
+                    </div>
+                @endforeach
             </div>
-            <div class="order">
-                <div class="infoLine">
-                    <div class="infoLine"><p>Заказ</p><p class="number">№ 44444444</p></div>
-                    <div class="infoLine"><p>Статус</p><p class="status">В сборке</p></div>
-                </div>
-                <div class="infoLine"><p>Сумма</p><p class="cost">4 444 Руб</p></div>
-                <div class="infoLine"><a href="#" class="cancel">отменить заказ</a></div>
-
+        </section>
 @endsection
