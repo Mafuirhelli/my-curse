@@ -39,6 +39,11 @@ Route::get('login',
     [UserController::class, 'login'
     ])->name('login');
 
+Route::get('logout',
+    [UserController::class, 'logout'
+    ])->name('logout');
+
+
 Route::get('verify-email', function () {
     return view('users.verify-email');
 })->middleware('auth')->name('verification.notice');
