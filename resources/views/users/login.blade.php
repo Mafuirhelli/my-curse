@@ -34,6 +34,7 @@
 
                 <button type="submit" class="primary-btn" style="margin-top: 30px">Вход</button>
             </form>
+        <a href="{{route('password.request')}}">Забыли пароль?</a>
         </section>
 
 @endsection
