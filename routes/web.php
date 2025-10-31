@@ -27,36 +27,30 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-// Маршруты администратора
+
+
     Route::get('/dashboard', [AdminController::class, 'dashboard'
     ])->name('admin.dashboard')->middleware(AdminMiddleware::class)->middleware('auth');
-    // Управление продуктами
-    Route::get('/products', [AdminController::class, 'products'
-    ])->name('admin.products')->middleware(AdminMiddleware::class)->middleware('auth');
-    Route::get('/products/create', [AdminController::class, 'createProduct'
-    ])->name('admin.products.create')->middleware(AdminMiddleware::class)->middleware('auth');
-    Route::post('/products', [AdminController::class, 'storeProduct'
-    ])->name('admin.products.store')->middleware(AdminMiddleware::class)->middleware('auth');
-    Route::get('/products/{product}/edit', [AdminController::class, 'editProduct'
-    ])->name('admin.products.edit')->middleware(AdminMiddleware::class)->middleware('auth');
-    Route::put('/products/{product}', [AdminController::class, 'updateProduct'
-    ])->name('admin.products.update')->middleware(AdminMiddleware::class)->middleware('auth');
-    Route::delete('/products/{product}', [AdminController::class, 'deleteProduct'
-    ])->name('admin.products.delete')->middleware(AdminMiddleware::class)->middleware('auth');
-    // Управление скидками
-    Route::get('/discounts', [AdminController::class, 'discounts'
-    ])->name('admin.discounts')->middleware(AdminMiddleware::class)->middleware('auth');
-    Route::post('/discounts', [AdminController::class, 'storeDiscount'
-    ])->name('admin.discounts.store')->middleware(AdminMiddleware::class)->middleware('auth');
-    Route::delete('/discounts/{discount}', [AdminController::class, 'deleteDiscount'
-    ])->name('admin.discounts.delete')->middleware(AdminMiddleware::class)->middleware('auth');
-    // Управление заказами
-    Route::get('/orders',
-        [AdminController::class, 'orders'
-        ])->name('admin.orders')->middleware(AdminMiddleware::class)->middleware('auth');
-    Route::put('/orders/{order}/status',
-        [AdminController::class, 'updateOrderStatus'
-        ])->name('admin.orders.status')->middleware(AdminMiddleware::class)->middleware('auth');
+Route::get('/admin/products', [AdminController::class, 'products'])->name('admin.products');
+Route::get('/admin/products/create', [AdminController::class, 'createProduct'])->name('admin.products.create');
+Route::post('/admin/products', [AdminController::class, 'storeProduct'])->name('admin.products.store');
+Route::get('/admin/products/{product}/edit', [AdminController::class, 'editProduct'])->name('admin.products.edit');
+Route::put('/admin/products/{product}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
+Route::delete('/admin/products/{product}', [AdminController::class, 'deleteProduct'])->name('admin.products.delete');
+
+Route::get('/admin/discounts', [AdminController::class, 'discounts'])->name('admin.discounts');
+Route::get('/admin/discounts/create', [AdminController::class, 'createDiscount'])->name('admin.discounts.create');
+Route::post('/admin/discounts', [AdminController::class, 'storeDiscount'])->name('admin.discounts.store');
+Route::get('/admin/discounts/{discount}/edit', [AdminController::class, 'editDiscount'])->name('admin.discounts.edit');
+Route::put('/admin/discounts/{discount}', [AdminController::class, 'updateDiscount'])->name('admin.discounts.update');
+Route::delete('/admin/discounts/{discount}', [AdminController::class, 'deleteDiscount'])->name('admin.discounts.delete');
+
+Route::get('/admin/orders', [AdminController::class, 'orders'])->name('admin.orders');
+Route::get('/admin/orders/{order}', [AdminController::class, 'showOrder'])->name('admin.orders.show');
+Route::put('/admin/orders/{order}/status', [AdminController::class, 'updateOrderStatus'])->name('admin.orders.status');
+
+Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+Route::put('/admin/users/{user}/points', [AdminController::class, 'updateUserPoints'])->name('admin.users.points');
 
 
 Route::middleware('guest')->group(function () {

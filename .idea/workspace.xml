@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4eec888-8de5-43e9-a7e8-7cd4cbe107a9" name="Changes" comment="" />
+    <list default="true" id="a4eec888-8de5-43e9-a7e8-7cd4cbe107a9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Models/CartItem.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2025_10_30_140702_create_cart_items_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/menu.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,6 +217,9 @@
       <workItem from="1761270840146" duration="10078000" />
       <workItem from="1761295647632" duration="4000" />
       <workItem from="1761466574105" duration="613000" />
+      <workItem from="1761709209689" duration="1200000" />
+      <workItem from="1761789245102" duration="19063000" />
+      <workItem from="1761836832797" duration="9587000" />
     </task>
     <servers />
   </component>

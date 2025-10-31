@@ -43,4 +43,10 @@ class User extends Authenticatable
     {
         return $this->points;
     }
+    public function cartItems(): HasMany
+    {
+        return $this->hasMany(CartItem::class);
+    }
+    
+
 }

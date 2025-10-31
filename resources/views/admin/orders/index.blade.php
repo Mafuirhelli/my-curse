@@ -1,55 +1,100 @@
-@extends('template')
-@section('title')
-    <title>Управление продуктами</title>
-@endsection
+@extends('admin.layout')
+
+@section('title', 'Управление заказами')
+
 @section('content')
-    <div class="container mt-4">
+    <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1>Управление продуктами</h1>
-            <a href="{{ route('admin.products.create') }}" class="btn btn-primary">Добавить продукт</a>
+            <h1>Управление заказами</h1>
         </div>
 
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
 
-        <div class="card">
+        <div class="admin-card mb-4">
+            <div class="card-body">
+                <form action="{{ route('admin.orders') }}" method="GET">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select name="status" class="form-control">
+                                <option value="">Все статусы</option>
+                                @foreach($statuses as $status)
+                                    <option value="{{ $status }}" {{ request('status') == $status ? 'selected' : '' }}>
+                                        @if($status == 'pending') Ожидание @endif
+                                        @if($status == 'processing') В обработке @endif
+                                        @if($status == 'completed') Завершен @endif
+                                        @if($status == 'cancelled') Отменен @endif
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="date" name="date" class="form-control" value="{{ request('date') }}">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="admin-btn btn-outline-primary w-100">Фильтр</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="admin-card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="admin-table table-striped">
                         <thead>
                         <tr>
-                            <th>Изображение</th>
-                            <th>Название</th>
-                            <th>Цена</th>
-                            <th>Категория</th>
+                            <th>ID</th>
+                            <th>Пользователь</th>
+                            <th>Сумма</th>
+                            <th>Итоговая сумма</th>
+                            <th>Баллы использовано</th>
+                            <th>Баллы начислено</th>
+                            <th>Статус</th>
+                            <th>Дата</th>
                             <th>Действия</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($products as $product)
+                        @foreach($orders as $order)
                             <tr>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->user->name }}</td>
+                                <td>{{ number_format($order->total_amount, 2) }} ₽</td>
+                                <td>{{ number_format($order->final_amount, 2) }} ₽</td>
+                                <td>{{ $order->points_used }}</td>
+                                <td>{{ $order->points_earned }}</td>
                                 <td>
-                                    @if($product->image)
-                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width: 50px; height: 50px; object-fit: cover;">
-                                    @else
-                                        <div style="width: 50px; height: 50px; background: #eee; display: flex; align-items: center; justify-content: center;">
-                                            <small>Нет фото</small>
-                                        </div>
-                                    @endif
+                                <span class="badge
+                                    @if($order->status == 'pending') bg-warning
+                                    @elseif($order->status == 'processing') bg-info
+                                    @elseif($order->status == 'completed') bg-success
+                                    @else bg-danger @endif">
+                                    @if($order->status == 'pending') Ожидание @endif
+                                    @if($order->status == 'processing') В обработке @endif
+                                    @if($order->status == 'completed') Завершен @endif
+                                    @if($order->status == 'cancelled') Отменен @endif
+                                </span>
                                 </td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ number_format($product->price, 2) }} ₽</td>
-                                <td>{{ $product->category }}</td>
+                                <td>{{ $order->created_at->format('d.m.Y H:i') }}</td>
                                 <td>
-                                    <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-sm btn-warning">Редактировать</a>
-                                    <form action="{{ route('admin.products.delete', $product) }}" method="POST" style="display: inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Удалить продукт?')">Удалить</button>
-                                    </form>
+                                    <div class="btn-group">
+                                        <a href="{{ route('admin.orders.show', $order) }}" class="admin-btn btn-sm btn-info">Детали</a>
+                                        <form action="{{ route('admin.orders.status', $order) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('PUT')
+                                            <select name="status" class="form-control form-control-sm" onchange="this.form.submit()">
+                                                @foreach($statuses as $status)
+                                                    <option value="{{ $status }}" {{ $order->status == $status ? 'selected' : '' }}>
+                                                        @if($status == 'pending') Ожидание @endif
+                                                        @if($status == 'processing') В обработке @endif
+                                                        @if($status == 'completed') Завершен @endif
+                                                        @if($status == 'cancelled') Отменен @endif
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
