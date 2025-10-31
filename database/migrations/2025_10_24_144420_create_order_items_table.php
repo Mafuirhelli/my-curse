@@ -8,6 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
+        Schema::create('orders', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->decimal('total_amount', 10, 2);
+            $table->decimal('final_amount', 10, 2);
+            $table->integer('points_used')->default(0);
+            $table->integer('points_earned')->default(0);
+            $table->string('status')->default('pending');
+            $table->timestamps();
+        });
+
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
