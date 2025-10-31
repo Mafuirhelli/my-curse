@@ -9,7 +9,7 @@
     <section class="login-content section-overlay">
         <div class="overlay"></div>
         <h2>Регистрация</h2>
-        <form action="{{route('user.store')}}" method="post" class="login-content" style="gap: 5px">
+        <form action="{{route('users.store')}}" method="post" class="login-content" style="gap: 5px">
             @csrf
             <label for="email">Email</label>
             <input name="email" type="email" class="@error('email') is-invalid @enderror form-control" id="email" placeholder="Email" value="{{ old('email') }}">
