@@ -8,24 +8,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('main');
-})->name('main');
 
-Route::get('/menu', function () {
-    $products = \App\Models\Product::where('is_active', true)->get();
-    return view('menu', compact('products'));
-})->name('menu');
-
-Route::get('profile', [UserController::class, 'profile'])->name('profile');
-
-Route::get('/interior', function () {
-    return view('interior');
-})->name('interior');
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
 
 
 
@@ -54,6 +37,24 @@ Route::put('/admin/users/{user}/points', [AdminController::class, 'updateUserPoi
 
 
 Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return view('main');
+    })->name('main');
+
+    Route::get('/menu', function () {
+        $products = \App\Models\Product::where('is_active', true)->get();
+        return view('menu', compact('products'));
+    })->name('menu');
+
+    Route::get('profile', [UserController::class, 'profile'])->name('profile');
+
+    Route::get('/interior', function () {
+        return view('interior');
+    })->name('interior');
+
+    Route::get('/contact', function () {
+        return view('contact');
+    })->name('contact');
     Route::get('register',
         [UserController::class, 'create'
         ])->name('register');
