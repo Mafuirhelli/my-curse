@@ -47,11 +47,11 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended('profile')->with('success', 'Welcome, ' . Auth::user()->name . '!');
+            return redirect()->intended('profile')->with('success', 'Добро пожаловать, ' . Auth::user()->name . '!');
         }
 
         return back()->withErrors([
-            'email' => 'Wrong login or password',
+            'email' => 'Неверный логин или пароль',
         ]);
 
     }

@@ -8,61 +8,34 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return view('main');
+})->name('main');
 
+Route::get('/menu', function () {
+    $products = \App\Models\Product::where('is_active', true)->get();
+    return view('menu', compact('products'));
+})->name('menu');
 
+Route::get('profile', [UserController::class, 'profile'])->name('profile');
 
+Route::get('/interior', function () {
+    return view('interior');
+})->name('interior');
 
-    Route::get('/dashboard', [AdminController::class, 'dashboard'
-    ])->name('admin.dashboard')->middleware(AdminMiddleware::class)->middleware('auth');
-Route::get('/admin/products', [AdminController::class, 'products'])->name('admin.products');
-Route::get('/admin/products/create', [AdminController::class, 'createProduct'])->name('admin.products.create');
-Route::post('/admin/products', [AdminController::class, 'storeProduct'])->name('admin.products.store');
-Route::get('/admin/products/{product}/edit', [AdminController::class, 'editProduct'])->name('admin.products.edit');
-Route::put('/admin/products/{product}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
-Route::delete('/admin/products/{product}', [AdminController::class, 'deleteProduct'])->name('admin.products.delete');
-
-Route::get('/admin/discounts', [AdminController::class, 'discounts'])->name('admin.discounts');
-Route::get('/admin/discounts/create', [AdminController::class, 'createDiscount'])->name('admin.discounts.create');
-Route::post('/admin/discounts', [AdminController::class, 'storeDiscount'])->name('admin.discounts.store');
-Route::get('/admin/discounts/{discount}/edit', [AdminController::class, 'editDiscount'])->name('admin.discounts.edit');
-Route::put('/admin/discounts/{discount}', [AdminController::class, 'updateDiscount'])->name('admin.discounts.update');
-Route::delete('/admin/discounts/{discount}', [AdminController::class, 'deleteDiscount'])->name('admin.discounts.delete');
-
-Route::get('/admin/orders', [AdminController::class, 'orders'])->name('admin.orders');
-Route::get('/admin/orders/{order}', [AdminController::class, 'showOrder'])->name('admin.orders.show');
-Route::put('/admin/orders/{order}/status', [AdminController::class, 'updateOrderStatus'])->name('admin.orders.status');
-
-Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
-Route::put('/admin/users/{user}/points', [AdminController::class, 'updateUserPoints'])->name('admin.users.points');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 
 Route::middleware('guest')->group(function () {
-    Route::get('/', function () {
-        return view('main');
-    })->name('main');
-
-    Route::get('/menu', function () {
-        $products = \App\Models\Product::where('is_active', true)->get();
-        return view('menu', compact('products'));
-    })->name('menu');
-
-    Route::get('profile', [UserController::class, 'profile'])->name('profile');
-
-    Route::get('/interior', function () {
-        return view('interior');
-    })->name('interior');
-
-    Route::get('/contact', function () {
-        return view('contact');
-    })->name('contact');
-    Route::get('register',
-        [UserController::class, 'create'
-        ])->name('register');
 
     Route::post('register',
         [UserController::class, 'store'
         ])->name('users.store');
-
+    Route::get('register',
+        [UserController::class, 'create'
+        ])->name('register');
     Route::get('login',
         [UserController::class, 'login'
         ])->name('login');
@@ -96,10 +69,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
     Route::get('/order-history', [OrderController::class, 'orderHistory'])->name('order.history');
 
-    Route::post('/profile/avatar', [UserController::class, 'updateAvatar'])->name('profile.avatar.update');
 });
 
 Route::middleware('auth')->group(function () {
+
     Route::get('verify-email', function () {
         return view('users.verify-email');
     })->name('verification.notice');
@@ -109,6 +82,7 @@ Route::middleware('auth')->group(function () {
 
         return redirect()->route('profile');
     })->middleware('signed')->name('verification.verify');
+        Route::post('/profile/avatar', [UserController::class, 'updateAvatar'])->name('profile.avatar.update');
 
     Route::post('/email/verification-notification', function (Request $request) {
         $request->user()->sendEmailVerificationNotification();
@@ -119,4 +93,25 @@ Route::middleware('auth')->group(function () {
     Route::get('logout',
         [UserController::class, 'logout'
         ])->name('logout');
+
 });
+
+Route::get('/dashboard', [AdminController::class, 'dashboard'
+])->name('admin.dashboard')->middleware(AdminMiddleware::class)->middleware('auth');
+Route::get('/admin/products', [AdminController::class, 'products'])->name('admin.products');
+Route::get('/admin/products/create', [AdminController::class, 'createProduct'])->name('admin.products.create');
+Route::post('/admin/products', [AdminController::class, 'storeProduct'])->name('admin.products.store');
+Route::get('/admin/products/{product}/edit', [AdminController::class, 'editProduct'])->name('admin.products.edit');
+Route::put('/admin/products/{product}', [AdminController::class, 'updateProduct'])->name('admin.products.update');
+Route::delete('/admin/products/{product}', [AdminController::class, 'deleteProduct'])->name('admin.products.delete');
+Route::get('/admin/discounts', [AdminController::class, 'discounts'])->name('admin.discounts');
+Route::get('/admin/discounts/create', [AdminController::class, 'createDiscount'])->name('admin.discounts.create');
+Route::post('/admin/discounts', [AdminController::class, 'storeDiscount'])->name('admin.discounts.store');
+Route::get('/admin/discounts/{discount}/edit', [AdminController::class, 'editDiscount'])->name('admin.discounts.edit');
+Route::put('/admin/discounts/{discount}', [AdminController::class, 'updateDiscount'])->name('admin.discounts.update');
+Route::delete('/admin/discounts/{discount}', [AdminController::class, 'deleteDiscount'])->name('admin.discounts.delete');
+Route::get('/admin/orders', [AdminController::class, 'orders'])->name('admin.orders');
+Route::get('/admin/orders/{order}', [AdminController::class, 'showOrder'])->name('admin.orders.show');
+Route::put('/admin/orders/{order}/status', [AdminController::class, 'updateOrderStatus'])->name('admin.orders.status');
+Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+Route::put('/admin/users/{user}/points', [AdminController::class, 'updateUserPoints'])->name('admin.users.points');

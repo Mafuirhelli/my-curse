@@ -59,7 +59,7 @@
                             <form action="{{ route('cart.add', $product) }}" method="POST" class="add-to-cart-form">
                                 @csrf
                                 <div class="quantity-controls">
-                                    <input type="number" name="quantity" id="quantity-{{ $product->id }}" value="1" min="1" class="form-control">
+                                    <input type="number" name="quantity" id="quantity-{{ $product->id }}" value="0" min="0" class="form-control">
                                     <div class="quantity-controller">
                                         <button type="button" class="plus-btn" onclick="incrementQuantity({{ $product->id }})">+</button>
                                         <button type="button" class="plus-btn" onclick="decrementQuantity({{ $product->id }})">-</button>

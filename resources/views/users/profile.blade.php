@@ -18,7 +18,7 @@
                 <img class="user-avatar" src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="profile-dummy">
                 <form action="{{ route('profile.avatar.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="file" name="avatar" id="avatar" style="display: none;" onchange="this.form.submit()">
+                    <input type="file" name="avatar" id="avatar" style="display: none;" onchange="this.form.submit()" accept="image/png, image/jpeg">
                     <a href="#" onclick="document.getElementById('avatar').click()">Сменить аватар</a>
                 </form>
             </div>
